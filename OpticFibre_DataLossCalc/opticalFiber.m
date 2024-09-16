@@ -1,6 +1,5 @@
 classdef opticalFiber < handle
-    %OPTICALFIBER Class definition for an optical fiber object
-    %   Detailed explanation goes here
+  
     
     properties
         length
@@ -11,8 +10,7 @@ classdef opticalFiber < handle
     
     methods
         function obj = opticalFiber(varargin)
-            %OPTICALFIBER Construct an instance of this class
-            %   Detailed explanation goes here
+        
             %   Initialize with parameter/value pairs:
             %   length (m), attenuation (dB/m), modeFieldDiameter (um), numericalAperture
             
@@ -34,19 +32,17 @@ classdef opticalFiber < handle
         
         function output = getAttenuation(obj, length)
             %GETATTENUATION Calculate the attenuation over a given length
-            %   Detailed explanation goes here
             output = obj.attenuation * length / obj.length;
         end
         
         function output = getDispersion(obj, wavelength)
             %GETDISPERSION Calculate the chromatic dispersion at a given wavelength
-            %   Detailed explanation goes here
             output = (1.027e-4 * obj.modeFieldDiameter^2 * (obj.numericalAperture^2) * (wavelength^2)) ./ (obj.length * (wavelength^2 - (obj.modeFieldDiameter^2)*(obj.numericalAperture^2)));
         end
         
         function output = getModeFieldDiameter(obj, wavelength)
             %GETMODEFIELDDIAMETER Calculate the mode field diameter at a given wavelength
-            %   Detailed explanation goes here
+            %   skibbidy toilet
             output = obj.modeFieldDiameter * sqrt((wavelength^2 - 1.3e-5) / (obj.modeFieldDiameter^2 - 1.3e-5));
         end
     end
